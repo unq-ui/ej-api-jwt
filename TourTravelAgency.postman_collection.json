@@ -1,0 +1,199 @@
+{
+	"info": {
+		"_postman_id": "1b403326-f59f-4e76-8d9b-187449969bc3",
+		"name": "TourTravelAgency",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login - no admin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"juan@gmail.com\",\n\t\"password\": \"juan\"\n}"
+				},
+				"url": {
+					"raw": "localhost:7000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login - wrong password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"juan@gmail.com\",\n\t\"password\": \"juan1234\"\n}"
+				},
+				"url": {
+					"raw": "localhost:7000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login - admin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"lean@gmail.com\",\n\t\"password\": \"lean\"\n}"
+				},
+				"url": {
+					"raw": "localhost:7000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:7000/user/u_1",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"user",
+						"u_1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all content",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:7000/content",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"content"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create content with same title",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Tour Gratis de Barcelona\",\n\t\"charge\": 0.0,\n\t\"amountOfPeople\": 15,\n\t\"city\": \"Barcelona\"\n}"
+				},
+				"url": {
+					"raw": "localhost:7000/content",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"content"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create content",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Espectáculo flamenco en Barcelona\",\n\t\"charge\": 0.0,\n\t\"amountOfPeople\": 15,\n\t\"city\": \"Barcelona\"\n}"
+				},
+				"url": {
+					"raw": "localhost:7000/content",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"content"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
