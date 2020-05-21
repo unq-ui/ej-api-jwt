@@ -1,17 +1,19 @@
 package ar.com.unqui.api.controllers
 
 import ar.com.unqui.api.LoginUser
+import ar.com.unqui.api.TokenJWT
 import ar.com.unqui.model.NotFoundUser
 import ar.com.unqui.model.TourTravelAgency
 import io.javalin.http.Context
 import io.javalin.http.NotFoundResponse
 
-class UserController(val tourTravelAgency: TourTravelAgency) {
+class UserController(val tourTravelAgency: TourTravelAgency, val tokenJWT: TokenJWT) {
 
     fun login(ctx: Context) {
         val loginUser = ctx.bodyAsClass(LoginUser::class.java)
         try {
             val user = tourTravelAgency.login(loginUser.email, loginUser.password)
+            ctx.header("Authorization", tokenJWT.generateToken(user))
             ctx.json(user)
         } catch (e: NotFoundUser) {
             throw NotFoundResponse("Wrong email or password")

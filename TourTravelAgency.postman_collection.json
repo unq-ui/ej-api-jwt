@@ -6,6 +6,35 @@
 	},
 	"item": [
 		{
+			"name": "Login - admin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"lean@gmail.com\",\n\t\"password\": \"lean\"\n}"
+				},
+				"url": {
+					"raw": "localhost:7000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Login - no admin",
 			"request": {
 				"method": "POST",
@@ -64,39 +93,68 @@
 			"response": []
 		},
 		{
-			"name": "Login - admin",
+			"name": "Get user",
 			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
+				"method": "GET",
+				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"email\": \"lean@gmail.com\",\n\t\"password\": \"lean\"\n}"
+					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:7000/login",
+					"raw": "localhost:7000/user/u_1",
 					"host": [
 						"localhost"
 					],
 					"port": "7000",
 					"path": [
-						"login"
+						"user",
+						"u_1"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Get user",
+			"name": "Get user with token",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6InVfMiJ9.szOPi2BKieefm9rLmUQUcuvVJWoX9jc6kl55obH016I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:7000/user/u_1",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"user",
+						"u_1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user with invalid user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6InVfNDIifQ.wdzqNPF2zq-jTpUaWBEo1TlGD6Om5SwLQ3cfpV3wNYY",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": ""
@@ -132,6 +190,74 @@
 					"port": "7000",
 					"path": [
 						"content"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all content with header",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6InVfMiJ9.szOPi2BKieefm9rLmUQUcuvVJWoX9jc6kl55obH016I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:7000/content",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"content"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all content with invalid token",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6InVfNDIifQ.wdzqNPF2zq-jTpUaWBEo1TlGD6Om5SwLQ3cfpV3wNYY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:7000/content",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"content"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": ""
+						}
 					]
 				}
 			},
@@ -175,6 +301,74 @@
 						"key": "Content-Type",
 						"name": "Content-Type",
 						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Espectáculo flamenco en Barcelona\",\n\t\"charge\": 0.0,\n\t\"amountOfPeople\": 15,\n\t\"city\": \"Barcelona\"\n}"
+				},
+				"url": {
+					"raw": "localhost:7000/content",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"content"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create content with header no admin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6InVfMiJ9.szOPi2BKieefm9rLmUQUcuvVJWoX9jc6kl55obH016I",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Espectáculo flamenco en Barcelona\",\n\t\"charge\": 0.0,\n\t\"amountOfPeople\": 15,\n\t\"city\": \"Barcelona\"\n}"
+				},
+				"url": {
+					"raw": "localhost:7000/content",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"content"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create content with admin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6InVfMSJ9._KhWXeXAoIRAbYJDiCxbsnHSniq7FP8B8DcY8sRDow8",
 						"type": "text"
 					}
 				],
